@@ -1,3 +1,11 @@
+#input-task {
+    display: inline-block;
+    width: 265px;
+}
+span.task {
+    display:inline-block;
+    width: 250px;
+}
 input:checked + span.task {
     text-decoration: line-through;
 }
