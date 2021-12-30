@@ -1,3 +1,8 @@
+let taskList = JSON.parse(localStorage.getItem("tasks")) || [];
+for (const task of taskList) {
+    addTask(task);
+}
+
 document.getElementById("add-task-button")
     .addEventListener("click", function () {
         let inputTask = document.getElementById("input-task");
@@ -5,8 +10,9 @@ document.getElementById("add-task-button")
             console.log("empty input");
             return;
         }
-        console.log("Task: " + inputTask);
+        console.log("Task: " + inputTask.value);
         addTask(inputTask.value);
+        saveTask(inputTask.value);
         inputTask.value = "";
     });
 
@@ -32,4 +38,9 @@ function addTask(task) {
         document.getElementById("task-list")
             .removeChild(listElement);
     });
+}
+
+function saveTask(task) {
+    taskList.push(task);
+    localStorage.setItem("tasks", JSON.stringify(taskList))
 }
